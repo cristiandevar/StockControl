@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+  {% include 'error.html' %}
+  <a href="{% url 'productos-proveedor' proveedor.id %}" class="btn btn-outline-primary"> {{ value }} </a>
+{% endblock %}
