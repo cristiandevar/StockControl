@@ -1,0 +1,71 @@
+
+{% extends 'base.html' %}
+{% load static%}
+{% block 'content' %}
+    <h1>Stock Control</h1><br>
+    <h4><em>¿Como lo uso?</em></h4>
+    <ol>
+        <li>
+            <p>
+                Si el navegador posee una pantalla pequeña, debes clickear sobre el <strong>Menú</strong> <i class="fa-solid fa-bars fa-2xs"></i> . Si no, ignora este paso.
+            </p>
+        </li>
+        <li>
+            <p>
+                Luego haz click en <strong>Proveedores</strong> y agrega uno clickeando en <i class="fa-solid fa-plus" style="color: #11ff00;"></i> debajo de la tabla.
+            </p>
+        </li>
+        <li>
+            <p>
+                Lo siguiente es registrar los Productos que nos provee. Haz click en <strong>Productos</strong> y luego haz click en <i class="fa-solid fa-plus" style="color: #11ff00;"></i> debajo de la tabla.
+            </p>
+        </li>
+        <li>
+            <p>
+            Y por ultimo repetir los pasos anteriores para formar tu Base de datos de <strong>Proveedores</strong> y <strong>Productos</strong>.
+            </p>
+        </li>
+    </ol><br>
+    <h4><em>Funciones Principales</em></h4>
+    <ul>
+        <li>
+            <p>
+                <u>Listar</u> <strong>Proveedores</strong> y <strong>Productos</strong>.
+            </p>
+        </li>
+        <li>
+            <p>
+                <u>Agregar</u> <strong>Proveedores</strong> y <strong>Productos</strong>.
+            </p>
+        </li>
+        <li>
+            <p>
+                <u>Modificar</u> <strong>Proveedores</strong> y <strong>Productos</strong>.
+            </p>
+            </li>
+        <li>
+            <p>
+                <u>Eliminar</u> <strong>Proveedores</strong> y <strong>Productos</strong>.
+            </p>
+        </li>
+    </ul><br>
+    <h4><em>Aclaraciones</em></h4>
+    <ul>
+        <li>
+            <p>
+                Al agregar <strong>Productos</strong> debes tener en cuenta que debe existir al menos un <strong>Proveedor</strong>.
+            </p>
+        </li>
+        <li>
+            <p>
+                Al eliminar <strong>Proveedores</strong> debes tener en cuenta que no deben tener <strong>Productos</strong> relacionados.
+            </p>
+        </li>
+        <li>
+            <p>
+                Por ultimo: Esta aplicacion es una simulacion de Control de Stock, seria genial agregarle funciones como enlistar productos segun el proveedor, ordenar productos por Stock, ordenar Proveedores segun la fecha de registro y un gran etc... Desde ya agradezco su cooperacion y espero que llegue este proyecto llegue a un buen puerto.
+            </p>
+        </li>
+    </ul>
+{% endblock %}
+

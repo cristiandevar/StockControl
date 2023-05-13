@@ -38,5 +38,9 @@
     {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'proveedores' %}" class="btn btn-outline-primary"> Cancelar Eliminar</a>
+<p>
+    <a href="{% url 'proveedores' %}" class="btn btn-outline-primary"> Volver a Proveedores </a>
+    o
+    <a href="{% url 'producto-proveedor-create' proveedor.id %}" class="btn btn-outline-primary"> Agrega un Producto </a>
+</p>
 {% endblock %}

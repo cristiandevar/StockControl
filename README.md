@@ -56,7 +56,7 @@ La idea a futuro es seguir agregando funcionalidad y calidad. Desde ya agradezco
   <img src=".\static\capturas\Proveedores-Borrar-Con-Productos.png">
 
 * #### Etapa 2
-  <img src=".\static\capturas\Proveedores-Borrar-Con-Productos-2-2.png">
+  <img src=".\static\capturas\Proveedores-Borrar-Con-Productos-2.png">
 
 * #### Etapa 3
   <img src=".\static\capturas\Proveedores-Borrar-Con-Productos-3-2.png">

@@ -75,3 +75,4 @@ class ProductoForm(ModelForm):
             raise forms.ValidationError("El precio debe ser un numero positivo y menor a 1 millon")
         elif stock < 0:
             raise forms.ValidationError("El stock debe ser un numero natural")
+

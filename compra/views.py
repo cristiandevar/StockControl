@@ -1,3 +1,4 @@
+from django import forms
 from django.db.models import ProtectedError
 from django.shortcuts import render, redirect, get_object_or_404
 from compra.models import Proveedor, Producto
@@ -5,8 +6,8 @@ from compra.forms import ProveedorForm, ProductoForm
 
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html')
+def inicio(request):
+    return render(request, 'inicio.html')
 
 
 def proveedores_view(request):
@@ -23,13 +24,9 @@ def proveedores_view(request):
 
 def productos_view(request):
     productos = Producto.objects.all()
-    hay = True
     return render(request, 'productos.html', {
         'productos': productos
     })
-
-
-
 
 
 def proveedor_create(request):
@@ -55,16 +52,16 @@ def producto_create(request):
             if form.is_valid():
                 form.save()
                 return redirect('productos')
-
         return render(request, 'producto_create.html', {
-            'form': form,
-            'submit': 'Crear Producto',
-            'direccion': 'productos'
-        })
+                'form': form,
+                'submit': 'Crear Producto',
+                'direccion': 'productos'
+            })
     else:
         return render(request, 'error_opcion_producto.html', {
             'mensaje': 'Error al Agregar: No existen proveedores registrados.',
-            'direccion': 'index',
+            'direccion': 'inicio',
+            'value_volver': 'Inicio',
             'value': 'Agregar Proveedor'
         })
 
@@ -114,12 +111,14 @@ def proveedor_delete(request, proveedor_id):
             'direccion': 'proveedores',
             'productos': productos,
             'proveedor': proveedor,
-            'value': 'Ver Productos'
+            'value': 'Ver Productos',
+            'value_volver': 'Atras'
         })
     except Exception:
         return render(request, 'error.html', {
             'mensaje': 'Error al borrar: Proveedor no encontrado.',
-            'direccion': 'productos-proveedor'
+            'direccion': 'productos-proveedor',
+            'value_volver': 'Atras'
         })
 
 
@@ -142,3 +141,27 @@ def producto_proveedor_delete(request, proveedor_id, producto_id):
     producto = Producto.objects.get(id=producto_id)
     producto.delete()
     return redirect('productos-proveedor', proveedor_id=proveedor_id)
+
+
+def producto_proveedor_create(request, proveedor_id):
+    form = ProductoForm(initial={
+        'proveedor': Proveedor.objects.get(id=proveedor_id)
+    })
+    form.fields['proveedor'].widget = forms.HiddenInput()
+    if request.method == 'POST':
+        form = ProductoForm(request.POST)
+        form.fields['proveedor'].widget = forms.HiddenInput()
+        if form.is_valid():
+            producto = form.save(commit=False)
+            proveedor = Proveedor.objects.get(id=proveedor_id)
+            producto.proveedor = proveedor
+            producto.save()
+            return redirect('productos-proveedor', proveedor_id=proveedor_id)
+
+    return render(request, 'producto_proveedor_create.html', {
+        'form': form,
+        'submit': 'Crear Producto',
+        'direccion': 'productos-proveedor',
+        'parametro': proveedor_id
+
+    })
