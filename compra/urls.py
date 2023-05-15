@@ -14,6 +14,7 @@ urlpatterns = [
     path('producto/delete/<int:producto_id>', views.producto_delete, name="producto-delete"),
     path('proveedor/<int:proveedor_id>/producto/<int:producto_id>/delete', views.producto_proveedor_delete, name="producto-proveedor-delete"),
     path('proveedor/<int:proveedor_id>/producto/create', views.producto_proveedor_create, name="producto-proveedor-create"),
+    path('proveedor/<int:proveedor_id>/producto/<int:producto_id>/update', views.producto_proveedor_update, name="producto-proveedor-update"),
     path('', views.inicio, name="inicio"),
 
 ]

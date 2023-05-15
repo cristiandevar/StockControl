@@ -93,8 +93,7 @@ def producto_update(request, producto_id):
         form = ProductoForm(instance=producto)
     return render(request, 'producto_update.html', {
         'form': form,
-        'submit': 'Modificar Producto',
-        'direccion': 'productos'
+        'submit': 'Modificar Producto'
     })
 
 
@@ -164,4 +163,20 @@ def producto_proveedor_create(request, proveedor_id):
         'direccion': 'productos-proveedor',
         'parametro': proveedor_id
 
+    })
+
+
+def producto_proveedor_update(request, proveedor_id, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, instance=producto)
+        if form.is_valid():
+            form.save()
+            return redirect('productos-proveedor', proveedor_id=proveedor_id)
+    form = ProductoForm(instance=producto)
+    form.fields['proveedor'].widget = forms.HiddenInput()
+    return render(request, 'producto_proveedor_update.html', {
+        'form': form,
+        'submit': 'Modificar Producto',
+        'parametro': proveedor_id
     })
