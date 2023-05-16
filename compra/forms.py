@@ -71,8 +71,8 @@ class ProductoForm(ModelForm):
         cleaned_data = super().clean()
         precio = cleaned_data.get('precio')
         stock = cleaned_data.get('stock_actual')
-        if precio < 1:
+        if precio <= 0:
             raise forms.ValidationError("El precio debe ser un numero positivo y menor a 1 millon")
-        elif stock < 0:
-            raise forms.ValidationError("El stock debe ser un numero natural")
+        elif stock <= 0:
+            raise forms.ValidationError("El stock debe ser un numero natural mayor a cero")
 

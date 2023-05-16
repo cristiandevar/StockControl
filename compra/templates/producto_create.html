@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
 {% block 'content' %}
+    <a class="btn btn-outline-primary" href="{% url direccion %}" title="Volver"><i class="fa-solid fa-arrow-left"></i></a>
     {% include 'crear_actualizar_form.html' %}
-    <a class="btn btn-outline-primary" href="{% url direccion %}">Volver</a>
 {% endblock %}

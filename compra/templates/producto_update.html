@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
 {% block 'content' %}
+  <a class="btn btn-outline-primary" href="{% url 'productos' %}" title="Calcelar"><i class="fa-solid fa-xmark" style="color: #fa0000;"></i></a>
   {% include 'crear_actualizar_form.html' %}
-<a class="btn btn-outline-primary" href="{% url 'productos' %}">Cancelar</a>
 {% endblock %}
